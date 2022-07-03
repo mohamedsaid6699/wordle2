@@ -1,0 +1,44 @@
+from random import choice
+from termcolor import colored
+def function_random_word():
+ file_object  = open("5word.txt", "r")
+ contents =file_object.read().split()
+ return choice(contents).lower()
+contents=function_random_word()
+contents.split( )
+round = 0
+guess_word = ""
+loop = True
+def function_whole_loop():
+ contents=function_random_word()
+ contents.split( )
+ round = 0
+ guess_word = ""
+ loop = True
+ while loop:
+    print("Start a new game? (y/quit)")
+    command = input()
+    if command == "quit":
+        loop = False
+    elif command == "y" :
+     while contents != guess_word :
+       round = round + 1
+       if round < 6 :
+        print('')
+        print("enter guess word")
+        guess_word = input()
+        guess_word.split( )
+        for i,l in enumerate(guess_word) :
+          if guess_word[i] == contents[i]:
+            print(colored(l,'green'),end='')
+          elif guess_word[i] in contents :
+             print(colored(l,'yellow'),end='')
+          elif guess_word[i] != contents[i]:
+            print(colored(l,'red'),end='')
+       elif round == 6 :
+         print('')
+         print ("try again the word was","-",contents,'-')
+         function_whole_loop()
+       if contents == guess_word :
+        print('')
+        print("great job")
